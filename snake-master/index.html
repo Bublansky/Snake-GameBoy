@@ -28,8 +28,10 @@
 			}
 			function create()
 			{
+				game.stage.backgroundColor = "#CADC9F";	// backgroundskin
+				//game.stage.backgroundColor = "#0f380f";	// verde mais escuro
 				// adiciona o placar no jogo 
-				gameText = game.add.text(canvasWidth, 0, "0", {font: "50px Arial", fill: "#fff"});
+				gameText = game.add.text(canvasWidth, 0, "0", {font: "50px Arial", fill: "#0f380f"});
 				// vincular o placar com o canto superior direito
 				gameText.anchor.setTo(1.5, 0);
 				initSnake();
