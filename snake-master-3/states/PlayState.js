@@ -115,8 +115,6 @@ PlayState.prototype = {
         //var y = 160;
         var x = 80;
         var y = 72;
-        console.log('chegou aqui');
-        console.log(player.length);
         if(player.length != 0) {
             x = player[player.length-1].x + 8;
             y = player[player.length-1].y + 8;
