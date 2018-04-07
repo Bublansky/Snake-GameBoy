@@ -25,10 +25,10 @@ var PlayState = function(game){},
 
 PlayState.prototype = {
     create: function(){
-        cursors = game.input.keyboard.createCursorKeys();
-        score = 0;
-        point = null;
-        addPoint();
+        cursors = game.input.keyboard.createCursorKeys();//
+        score = 0;//
+        point = null;//
+        addPoint();//adiciona o ponto de forma aleatória
         player = [];
         console.log(player.length);
         console.log(player);
@@ -43,7 +43,7 @@ PlayState.prototype = {
         };
 
         //scoreText = phaser.add.text(10, 10, '', style);
-        updateScore();
+       // updateScore();
     },
     update: function() {
         updateMovementPosition();
@@ -51,18 +51,19 @@ PlayState.prototype = {
         if((getTimeStamp() - lastUpdate) < updateSpeed) {
             return;
         }
+        //verifica se a cobra se colidiu com o ponto
         if(isColliding(player[0], point)) {
             increaseLength();
             addPoint();
             score++;
-            updateScore();
+          //  updateScore();
         }
         if(checkCollisionWithSelf()) {
             game.state.start("EndState");
             return;
         }
         lastUpdate = getTimeStamp();
-
+        //dinamismo para posicao do corpo em relacao com  a cabeça
         var oldX, oldY;
         for(var i = 0; i < player.length; i++) {
             var x = player[i].x;
@@ -75,9 +76,10 @@ PlayState.prototype = {
             oldX = x;
             oldY = y;
         }
+        //fazendo o movimento da cobra atraves de iteração das posicoes 
         switch(currentMovement) {
             case movement.UP:
-                player[0].y -= speed;
+                player[0].y = player[0].y - speed;
             break;
             case movement.RIGHT:
                 player[0].x += speed;
@@ -115,13 +117,14 @@ PlayState.prototype = {
         //var y = 160;
         var x = 80;
         var y = 72;
+        console.log(player.length)
         if(player.length != 0) {
-            x = player[player.length-1].x + 8;
-            y = player[player.length-1].y + 8;
+            x = player[player.length-1].x + 8; // capturando a posicao do eixo x do corpo
+            y = player[player.length-1].y + 8; // capturando a posicao do eixo x do corpo
         }
         var ball = this.game.add.sprite(x, y, 'playerball');
         this.game.physics.arcade.enable(ball);
-        player.push(ball);
+        player.push(ball); //aumentando o corpo
     }
 
     function updateMovementPosition() {
@@ -163,7 +166,7 @@ PlayState.prototype = {
 
     function checkCollisionWithSelf() {
         for(var i = 1; i < player.length; i++) {
-            if(player[0].body.hitTest(player[i].x, player[i].y)) {
+            if(player[0].body.hitTest(player[i].x, player[i].y)) { //verifica se a cabeça está dentro do corpo, especificamente na parte player[i]
                 return true;
             }
         }
