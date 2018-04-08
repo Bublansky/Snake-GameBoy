@@ -2,9 +2,12 @@ var EndState = function(game) {},
     aux;
 
 EndState.prototype = {
+    preload: function(){
+        this.configSpace = 0;
+    },
     addMenuOption: function(text, callback) {
         var optionStyle = { font: '11pt Early-GameBoy', fill: 'white', align: 'center'};
-        var txt = game.add.text(game.world.centerX, game.world.centerY, text, optionStyle);
+        var txt = game.add.text(game.world.centerX, ((game.world.centerY)+(this.configSpace * 30)), text, optionStyle);
         txt.anchor.setTo(0.5);
         txt.stroke = "";
         txt.strokeThickness = 10;
@@ -23,13 +26,17 @@ EndState.prototype = {
         txt.events.onInputUp.add(callback, this);
         txt.events.onInputOver.add(onOver, this);
         txt.events.onInputOut.add(onOut, this);
+        this.configSpace++;
     },
     create: function(){
-        var titleSytle = {font: '12pt Early-GameBoy',fill: 'white', align: 'center'};
-        var title = game.add.text(game.world.centerX,20,"GAME OVER",titleSytle); 
+        var titleSytle = {font: '12pt Early-GameBoy',fill: 'white', align: 'center'},
+            title = game.add.text(game.world.centerX,20,"GAME OVER",titleSytle); 
         title.anchor.set(0.5);
         this.addMenuOption('Play Again',function(e) {
             game.state.start('PlayState');
+        });
+        this.addMenuOption('Menu',function(e) {
+            game.state.start('Splash');
         });
     },
 }

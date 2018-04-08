@@ -44,8 +44,8 @@ Splash.prototype = {
   },
 
   addMenuOption: function(text, callback) {
-    var optionStyle = { font: '15pt Early-GameBoy', fill: 'white', align: 'center', stroke: '', srokeThickness: 4};
-    var txt = game.add.text(game.world.centerX, game.world.centerY, text, optionStyle);
+    var optionStyle = { font: '13pt Early-GameBoy', fill: 'white', align: 'center', stroke: '', srokeThickness: 4};
+    var txt = game.add.text(game.world.centerX, (game.world.centerY+10), text, optionStyle);
     txt.anchor.setTo(0.5);
     txt.stroke = "";
     txt.strokeThickness = 4;
@@ -118,6 +118,9 @@ Splash.prototype = {
     //}, 1000);
     game.stage.disableVisibilityChange = true;
     game.stage.backgroundColor = '#99cc00'
+    var titleSytle = {font: '12pt Early-GameBoy',fill: 'white', align: 'center'},
+        title = game.add.text(game.world.centerX,20,"SNAKE BOY",titleSytle); 
+    title.anchor.set(0.5);
     this.addMenuOption('Play', function () {
       //music.stop();
       game.state.start("PlayState");
