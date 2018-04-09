@@ -9,30 +9,7 @@ Splash.prototype = {
     game.load.script('WebFont', 'vendor/webfontloader.js');
     game.load.script('PlayState','states/PlayState.js');
     game.load.script('EndState','states/EndState.js');
-    //game.load.script('gamemenu','states/GameMenu.js');
-    //game.load.script('game', 'states/Game.js');
-    
-    //game.load.script('gameover','states/GameOver.js');
-    //game.load.script('Wins','states/Wins.js');
-    //game.load.script('credits', 'states/Credits.js');
-    //game.load.script('options', 'states/Options.js');
-   
-    
   },
-
-  //loadBgm: function () {
-    // thanks Kevin Macleod at http://incompetech.com/
-    //game.load.audio('dangerous', 'assets/audio/Dangerous.mp3');
-    //game.load.audio('exit', 'assets/audio/Exit the Premises.mp3');
-  //},
-  // varios freebies found from google image search
-  //loadImages: function () {
-    //game.load.image('space-bg', 'assets/images/mario_menu_bg.png');
-	//game.load.image('space-bg', 'assets/images/space-bg.jpg');
-    //game.load.image('menu-bg', 'assets/images/space-bg.png');
-    //game.load.image('options-bg', 'assets/images/options-bg.jpg');
-    //game.load.image('gameover-bg', 'assets/images/mario-game-over-2.png');
-  //},
 
   loadFonts: function () {
     WebFontConfig = {
@@ -59,44 +36,22 @@ Splash.prototype = {
       target.stroke = "";
       txt.useHandCursor = false;
     };
-    //txt.useHandCursor = true;
     txt.inputEnabled = true;
     txt.events.onInputUp.add(callback, this);
     txt.events.onInputOver.add(onOver, this);
     txt.events.onInputOut.add(onOut, this);
   },
-
-
-  //init: function () {
-    //this.loadingBar = game.make.sprite(game.world.centerX-(387/2), 400, "loading");
-    //this.logo       = game.make.sprite(game.world.centerX, 200, 'brand');
-    //this.status     = game.make.text(game.world.centerX, 380, 'Loading...', {fill: 'white'});
-    //utils.centerGameObjects([this.logo, this.status]);
-  //},
-  init: function(){
-  },
+  init: function(){},
 
   preload: function () {
-    //this.game.load.image('gameover', 'gfx/gameover-2.png');
 		this.game.load.image('point', 'assets/imgs/point-2.png');
 		this.game.load.image('playerball', 'assets/imgs/player-ball-2.png');
-		//this.game.load.image('play', 'gfx/play-3.png');
-   
-
+  
     this.loadScripts();
-    //this.loadImages();
     this.loadFonts();
-    //this.loadBgm();
-
   },
 
   addGameStates: function () {
-    //game.state.add("Wins",Wins);
-    //game.state.add("GameMenu",GameMenu);
-    //game.state.add("Game",Game);
-    //game.state.add("GameOver",GameOver);
-    //game.state.add("Credits",Credits);
-    //game.state.add("Options",Options);
     game.state.add("PlayState",PlayState);
     game.state.add("EndState",EndState);
    
@@ -109,15 +64,11 @@ Splash.prototype = {
   },
   */
   create: function() {
-    //this.status.setText('Ready!');
     this.addGameStates();
     //this.addGameMusic();
-
-    //setTimeout(function () {
-     // game.state.start("GameMenu");
-    //}, 1000);
     game.stage.disableVisibilityChange = true;
-    game.stage.backgroundColor = '#99cc00'
+    game.stage.backgroundColor = '#88cc00';
+    //'#99cc00'
     var titleSytle = {font: '12pt Early-GameBoy',fill: 'white', align: 'center'},
         title = game.add.text(game.world.centerX,20,"SNAKE BOY",titleSytle); 
     title.anchor.set(0.5);

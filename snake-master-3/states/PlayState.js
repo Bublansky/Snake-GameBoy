@@ -30,8 +30,6 @@ PlayState.prototype = {
         point = null;//
         addPoint();//adiciona o ponto de forma aleatória
         player = [];
-        console.log(player.length);
-        console.log(player);
         for(var i = 0; i < 4; i++) {
             increaseLength();
         }
@@ -59,7 +57,8 @@ PlayState.prototype = {
           //  updateScore();
         }
         if(checkCollisionWithSelf()) {
-            game.state.start("EndState");
+            //2 param -> limpar o mundo, 3 param -> limpar o cache
+            game.state.start("EndState",true,false,score);
             return;
         }
         lastUpdate = getTimeStamp();
@@ -93,7 +92,8 @@ PlayState.prototype = {
         }
 
         if(checkOutOfBoundry()) {
-            this.game.state.start("EndState");
+            //2 param -> limpar o mundo, 3 param -> limpar o cache
+            this.game.state.start("EndState",true,false,score);
             return;
         }
     }
@@ -117,7 +117,6 @@ PlayState.prototype = {
         //var y = 160;
         var x = 80;
         var y = 72;
-        console.log(player.length)
         if(player.length != 0) {
             x = player[player.length-1].x + 8; // capturando a posicao do eixo x do corpo
             y = player[player.length-1].y + 8; // capturando a posicao do eixo x do corpo

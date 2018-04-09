@@ -1,6 +1,6 @@
 // Global Variables
 var
-  game = new Phaser.Game(160, 144, Phaser.AUTO, 'game'),
+  game = new Phaser.Game(160, 144, Phaser.CANVAS, ''),
   Main = function () {},
   gameOptions = {
     playSound: true,
@@ -14,9 +14,6 @@ var
 Main.prototype = {
 
   preload: function () {
-    //game.load.image('stars',    'assets/images/stars.jpg');
-    //game.load.image('loading',  'assets/images/loading.png');
-    //game.load.image('brand',    'assets/images/mario1.jpg');
     game.load.script('polyfill',   'lib/polyfill.js');
     game.load.script('utils',   'lib/utils.js');
     game.load.script('splash',  'states/Splash.js');
