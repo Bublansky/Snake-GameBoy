@@ -4,7 +4,7 @@ EndState.prototype = {
     preload: function(){scoreText = null;},
     init: function(score){},
     addMenuOption: function(text, callback) {
-        var optionStyle = { font: '12pt Early-GameBoy', fill: 'white', align: 'center'};
+        var optionStyle = { font: '12pt Early-GameBoy', fill: '#336600', align: 'center'};
         var txt = game.add.text(game.world.centerX, ((game.world.centerY)+30), text, optionStyle);
         txt.anchor.setTo(0.5);
         txt.stroke = "";
@@ -15,7 +15,7 @@ EndState.prototype = {
           txt.useHandCursor = true;
         };
         var onOut = function (target) {
-          target.fill = "white";
+          target.fill = "#336600";
           target.stroke = "";
           txt.useHandCursor = false;
         };
@@ -25,7 +25,7 @@ EndState.prototype = {
         txt.events.onInputOut.add(onOut, this);
     },
     create: function(){
-        var titleSytle = {font: '12pt Early-GameBoy',fill: 'white', align: 'center'},
+        var titleSytle = {font: '12pt Early-GameBoy',fill: '#336600', align: 'center'},
             title = game.add.text(game.world.centerX,20,"GAME OVER!",titleSytle); 
         title.anchor.set(0.5);
 
