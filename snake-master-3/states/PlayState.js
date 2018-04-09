@@ -135,8 +135,8 @@ PlayState.prototype = {
     function addPoint() {
         var widthPoints = game.width/16;
         var heightPoints = game.height/16;
-        var x = Math.round(Math.random()*(widthPoints-1))*16;
-        var y = Math.round(Math.random()*(heightPoints-1))*16;
+        var x = Math.round(Math.random()*(widthPoints-2))*16 + 8;
+        var y = Math.round(Math.random()*(heightPoints-2))*16 + 8;
         if(!point) {
             point = this.game.add.sprite(game.world.centerX, game.world.centerY, 'point');
         }
