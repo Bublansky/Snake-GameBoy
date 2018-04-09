@@ -1,4 +1,5 @@
 var EndState = function(game) {};
+var enterKey;
 
 EndState.prototype = {
     preload: function(){scoreText = null;},
@@ -25,6 +26,8 @@ EndState.prototype = {
         txt.events.onInputOut.add(onOut, this);
     },
     create: function(){
+        enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+
         var titleSytle = {font: '12pt Early-GameBoy',fill: '#336600', align: 'center'},
             title = game.add.text(game.world.centerX,20,"GAME OVER!",titleSytle); 
         title.anchor.set(0.5);
@@ -32,8 +35,9 @@ EndState.prototype = {
         scoreText = game.add.text(game.world.centerX-70, ((game.world.centerY)-20),'',titleSytle);
         scoreText.setText('SCORE: ' + score);
 
-        this.addMenuOption('Play Again',function(e) {
-            game.state.start('PlayState');
-        });
+        //this.addMenuOption('Play Again',function(e) {
+        //    game.state.start('PlayState');
+        //});
+        enterKey.onDown.add(function() { game.state.start('PlayState');}, this);
     },
 }

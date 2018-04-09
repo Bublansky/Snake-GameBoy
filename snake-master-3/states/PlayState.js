@@ -36,6 +36,8 @@ PlayState.prototype = {
             increaseLength();
         }
 
+        createBoundaries();
+
         var style = {
             font: "16px Arial",
             fill: "#000",
@@ -103,6 +105,33 @@ PlayState.prototype = {
         }
     }
 }
+    function createBoundaries() {
+        var boundariesBlock;
+        
+        for(var i = 0; i < game.width; i++) {
+            boundariesBlock = this.game.add.sprite(game.world.centerX, game.world.centerY, 'playerball');
+            boundariesBlock.x = i;
+            boundariesBlock.y = 0;
+        }
+        
+        for(var i = 0; i < game.height; i++) {
+            boundariesBlock = this.game.add.sprite(game.world.centerX, game.world.centerY, 'playerball');
+            boundariesBlock.x = 0;
+            boundariesBlock.y = i;
+        }
+        
+        for(var i = 0; i < game.width; i++) {
+            boundariesBlock = this.game.add.sprite(game.world.centerX, game.world.centerY, 'playerball');
+            boundariesBlock.x = i;
+            boundariesBlock.y = game.height - boundariesBlock.width;
+        }
+        
+        for(var i = 0; i < game.height; i++) {
+            boundariesBlock = this.game.add.sprite(game.world.centerX, game.world.centerY, 'playerball');
+            boundariesBlock.x = game.width - boundariesBlock.width;
+            boundariesBlock.y = i;
+        }
+    }
     function addPoint() {
         var widthPoints = game.width/16;
         var heightPoints = game.height/16;
