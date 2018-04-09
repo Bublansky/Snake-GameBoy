@@ -26,6 +26,8 @@ var PlayState = function(game){},
 PlayState.prototype = {
     create: function(){
         cursors = game.input.keyboard.createCursorKeys();//
+        eatSound = game.add.audio('eat');
+        dieSound = game.add.audio('die');
         score = 0;//
         point = null;//
         addPoint();//adiciona o ponto de forma aleatória
@@ -51,12 +53,14 @@ PlayState.prototype = {
         }
         //verifica se a cobra se colidiu com o ponto
         if(isColliding(player[0], point)) {
+            eatSound.play();
             increaseLength();
             addPoint();
             score++;
           //  updateScore();
         }
         if(checkCollisionWithSelf()) {
+            dieSound.play();
             //2 param -> limpar o mundo, 3 param -> limpar o cache
             game.state.start("EndState",true,false,score);
             return;
@@ -93,6 +97,7 @@ PlayState.prototype = {
 
         if(checkOutOfBoundry()) {
             //2 param -> limpar o mundo, 3 param -> limpar o cache
+            dieSound.play();
             this.game.state.start("EndState",true,false,score);
             return;
         }

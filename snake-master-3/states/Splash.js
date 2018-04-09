@@ -44,9 +44,10 @@ Splash.prototype = {
   init: function(){},
 
   preload: function () {
-		this.game.load.image('point', 'assets/imgs/point-2.png');
-		this.game.load.image('playerball', 'assets/imgs/player-ball-2.png');
-  
+		game.load.image('point', 'assets/imgs/point-2.png');
+		game.load.image('playerball', 'assets/imgs/player-ball-2.png');
+    game.load.audio('eat','assets/sounds/beep-07.mp3');
+    game.load.audio('die','assets/sounds/beep-06.mp3');
     this.loadScripts();
     this.loadFonts();
   },
