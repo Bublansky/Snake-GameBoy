@@ -208,7 +208,19 @@ PlayState.prototype = {
     }
 
     function checkOutOfBoundry() {
-        if(player[0].x > game.width || player[0].x < 0) {
+        var min = (8);
+		var max = (8+4);
+		
+        if(player[0].x > game.width - max || player[0].x < min) {
+            return true;
+        }
+        if(player[0].y > game.height - max || player[0].y < min) {
+            return true;
+        }
+
+        return false;
+		/*
+		if(player[0].x > game.width || player[0].x < 0) {
             return true;
         }
         if(player[0].y > game.height || player[0].y < 0) {
@@ -216,4 +228,5 @@ PlayState.prototype = {
         }
 
         return false;
+		*/
     }
